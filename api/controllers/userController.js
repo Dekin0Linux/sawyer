@@ -39,9 +39,12 @@ const addNewUser = async(req,res)=>{
     try{
         const newUser = new UserModel(data)
         await newUser.save()
-        const newAccount = new AccountModel({user:newUser._id})
-        await newAccount.save()
-        res.send(newUser)
+        if(newUser){
+            const newAccount = new AccountModel({user:newUser._id})
+            await newAccount.save()
+            console.log(newUser._id)
+            res.send(newUser)
+        }
     }catch(err){
         res.json({msg:err.message})
     }

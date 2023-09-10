@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import logo from '../assets/sawyerLogo.png'
 
 // icons
 import { FcHome, FcLibrary ,FcStatistics,FcSimCardChip} from "react-icons/fc";
@@ -11,7 +12,9 @@ function Sidebar() {
   return (
     <div>
       <div className="bg-[#f2f4f5] py-16 hidden md:block h-screen">
-        <img src="" alt="logo" />
+        <div className="w-[200px] ">
+          <img src={logo} alt="logo" className="w-[100%]"/>
+        </div>
 
         <ul className="">
           <Link to={"/dashboard"}>

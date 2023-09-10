@@ -40,7 +40,7 @@ const Hero = () => {
       className={`flex md:flex-row flex-col ${styles.paddingY}`}
     >
       <section className="flex-1 flex justify-start items-start flex-col xl:px-0 sm:px-16 px-6 ">
-        <div className="">
+        <div className="w-full">
           <div className=" bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -51,7 +51,7 @@ const Hero = () => {
               {err ? <p className="text-red-600 text-center">{errMsg}</p> : ''}
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Your email
@@ -69,7 +69,7 @@ const Hero = () => {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Password
@@ -85,34 +85,14 @@ const Hero = () => {
                     onFocus={()=>setError(false)}
                   />
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-start">
-                    <div className="flex items-center h-5">
-                      <input
-                        id="remember"
-                        aria-describedby="remember"
-                        type="checkbox"
-                        className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                        required=""
-                        
-                      />
-                    </div>
-                    <div className="ml-3 text-sm">
-                      <label
-                        for="remember"
-                        className="text-gray-500 dark:text-gray-300"
-                      >
-                        Remember me
-                      </label>
-                    </div>
-                  </div>
+                {/* <div className="flex items-center justify-between">
                   <a
                     href="#"
                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Forgot password?
                   </a>
-                </div>
+                </div> */}
                 <button
                   type="submit"
                   className="w-full text-white bg-blue-400 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
@@ -134,7 +114,6 @@ const Hero = () => {
           src={family}
           className="w-[100%] h-[100%] relative z-[5]"
           alt=""
-          srcset=""
         />
         {/* <div classNameName="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
         <div classNameName="absolute z-[1] w-[80%] h-[80%] rounded-full bottom-40 white__gradient" />
