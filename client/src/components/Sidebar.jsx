@@ -13,7 +13,9 @@ function Sidebar() {
     <div>
       <div className="bg-[#f2f4f5] py-16 hidden md:block h-screen">
         <div className="w-[200px] ">
-          <img src={logo} alt="logo" className="w-[100%]"/>
+          <Link to={"/dashboard"}>
+            <img src={logo} alt="logo" className="w-[100%]"/>
+          </Link>
         </div>
 
         <ul className="">
