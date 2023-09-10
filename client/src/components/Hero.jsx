@@ -16,14 +16,14 @@ const Hero = () => {
   const handleLogin=(e)=>{
     e.preventDefault()
     const login = async()=>{
-      let getData = await axios.post(`${APIURL}/user/login`, {...logins} )
+      await axios.post(`${APIURL}/user/login`, {...logins} )
       .then(res=>{
           if(res.status === 200){
               localStorage.setItem("token", res?.data);
               navigate('/dashboard',{replace:true})
           }
       }).catch(err=>{
-        console.log(err.message)
+        setErrorMsg(err.message)
         setError(true)
         setErrorMsg('Invalid Credentials')
       })
