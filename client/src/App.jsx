@@ -7,7 +7,7 @@ import Accounts from './pages/Accounts'
 import Cards from './pages/Cards'
 import Transactions from './pages/Transactions'
 import Home from './pages/Home';
-import Layout from './layout/layout';
+import Layout from './layout/Layout';
 import Profile from './pages/Profile';
 
 function App() {
