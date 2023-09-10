@@ -20,7 +20,7 @@ const Hero = () => {
       .then(res=>{
           if(res.status === 200){
               localStorage.setItem("token", res?.data);
-              navigate('/dashboard')
+              navigate('/dashboard',{replace:true})
           }
       }).catch(err=>{
         console.log(err.message)

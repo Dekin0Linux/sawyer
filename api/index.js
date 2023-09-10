@@ -10,28 +10,20 @@ const transactionRoutes = require('./routes/transactionRoute')
 const cardRoutes = require('./routes/cardRoute')
 const notificationRoutes = require("./routes/notificationRoute")
 
-
 const app = express()
 dotenv.config()
-const corsOptions = {
-    origin: ['*','https://sawyerserver.onrender.com','https://sawyerbank.onrender.com/','http://localhost:5173/'],
-    methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-    allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
-    credentials: true,
-};;
 
 // MIDDLEWARES
 app.use(express.json())
-// app.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "*"); // Allow requests from any origin (you can specify specific origins instead of '*')
-//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT,PATCH, DELETE, OPTIONS"); // Allow the specified HTTP methods
-//     res.header(
-//       "Access-Control-Allow-Headers",
-//       "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-//     ); // Allow the specified headers
-//     next();  
-// });
-app.use(cors(corsOptions));
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", ["*"]); // Allow requests from any origin (you can specify specific origins instead of '*')
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT,PATCH, DELETE, OPTIONS"); // Allow the specified HTTP methods
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    ); // Allow the specified headers
+    next();  
+});
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
