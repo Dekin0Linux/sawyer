@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import APIURL from "../apiUrl";
+import LoaderComp from "./Loader";
 
 function Table() {
   const [activites, setActivites] = useState([]);
@@ -14,7 +15,7 @@ function Table() {
       let getData = await axios.post(`${APIURL}/transaction/usertransactions`, {
         clientid,
       });
-      setLoader("false");
+      setLoader(false);
       setActivites(getData.data);
     };
 
@@ -22,7 +23,7 @@ function Table() {
   }, [activites]);
   return (
     <div className="rounded-lg w-full bg-white">
-      
+      {loader ? <LoaderComp/> : ''}
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50 ">
           <tr>

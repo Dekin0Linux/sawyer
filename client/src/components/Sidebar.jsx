@@ -11,7 +11,7 @@ function Sidebar() {
   }
   return (
     <div>
-      <div className="bg-[#f2f4f5] py-16 hidden md:block h-screen">
+      <div className="bg-[#f2f4f5] py-9 hidden md:block h-screen">
         <div className="w-[200px] ">
           <Link to={"/dashboard"}>
             <img src={logo} alt="logo" className="w-[100%]"/>
@@ -51,11 +51,11 @@ function Sidebar() {
           <NavLink to={"/dashboard"} >
             <FcHome />
           </NavLink>
-          <NavLink to={"/accounts"}>
+          <NavLink to={"/dashboard/accounts"}>
             <FcLibrary />
           </NavLink>
-          <NavLink to={"/card"}><FcSimCardChip/></NavLink>
-          <NavLink to={"/transactions"}><FcStatistics/></NavLink>
+          <NavLink to={"/dashboard/card"}><FcSimCardChip/></NavLink>
+          <NavLink to={"/dashboard/transactions"}><FcStatistics/></NavLink>
         </div>
       </div>
     </div>

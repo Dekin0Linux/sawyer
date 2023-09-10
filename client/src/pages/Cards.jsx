@@ -4,6 +4,7 @@ import Atm from "../components/Atm";
 import Table from "../components/Table";
 import axios from 'axios'
 import APIURL from "../apiUrl";
+import LoaderComp from "../components/Loader";
 
 function Cards() {
   const[cards,setCards]=useState([])
@@ -14,7 +15,7 @@ function Cards() {
     // GETTING CARD DATA
     const getCards = async()=>{
       let getData = await axios.post(`${APIURL}/card/usercards`,{ clientid} )
-      setLoader('false')
+      setLoader(false)
       setCards(getData.data)
     }
 
@@ -22,20 +23,25 @@ function Cards() {
   },[])
   return (
     <div className="flex-1 bg-[#f6fdff] md:px-16  px-5 overflow-auto mb-20">
+      {loader ? <LoaderComp/> : ''}
       <Topbar title={"Cards"} />
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 bg-white">
         {
           cards && cards.map((eachCard,index)=>{
             return <Atm key={index} detail={eachCard}/>
           })
         }
-        {cards.length <= 0 ? "No cards Available" : ''}
       </div>
+        {cards.length <= 0 ? <p className="font-semibold text-center text-2xl">No Card Available</p> : ''}
 
-      <div className="shadow-lg  p-5 rounded-md my-5">
-        <p className="text-xl text-slate-400 pb-5">Card Activites</p>
-        <Table/>
+      {
+        cards.length <= 0 ? '' :
+     
+      <div className="shadow-lg bg-white  p-5 rounded-md my-5">
+        <p className="text-xl text-slate-400 pb-5">Activites</p>
+        <Table/> 
       </div>
+       }
     </div>
   );
 }

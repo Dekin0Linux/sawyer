@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import Topbar from "../components/Topbar";
 import axios from "axios";
 import APIURL from "../apiUrl";
+import LoaderComp from "../components/Loader";
 
 function Accounts() {
   const [user, setUser] = useState({});
+  const [loader,setLoader] = useState(true)
   useEffect(() => {
     let clientid = localStorage.getItem("token");
     !clientid ? (window.location="/") : ''
     // GETTING ACCOUNT DATA
     const getAcc = async () => {
       let getData = await axios.post(`${APIURL}/account/getById`, {clientid});
-      setUser(getData.data);
+      if(getData){
+        setLoader(false)
+        setUser(getData.data);
+      }
     };
 
     getAcc();
@@ -19,6 +24,7 @@ function Accounts() {
 
   return (
     <div className="flex-1 bg-[#f6fdff] md:px-16 px-5 overflow-auto">
+      {loader ? <LoaderComp/> : ''}
       <Topbar title={"Accounts"} />
       <div className="grid md:grid-cols-2 grid-cols-1 gap-3">
         <div>

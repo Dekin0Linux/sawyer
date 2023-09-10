@@ -14,6 +14,7 @@ import Table from "../components/Table";
 // f836299eef-1f2824aa53-rz0ylq
 import TransferModal from "../components/TransferModal";
 import DepositModal from "../components/DepositModal";
+import LoaderComp from "../components/Loader";
 
 function Dashbaord() {
   const [open, setOpen] = React.useState(false);
@@ -42,15 +43,18 @@ var currentMinute = currentTime.getMinutes();
     // GETTING ACCOUNT DATA
     const getAcc = async()=>{
       let getData = await axios.post(`${APIURL}/account/getById`, {clientid} )
-      setLoader('false')
+      setLoader(false)
       setData(getData.data)
     }
 
     // GETTING CARD DATA
     const getCards = async()=>{
       let getData = await axios.post(`${APIURL}/card/usercards`, {clientid} )
-      setLoader('false')
-      setCards(getData.data)
+      if(getData){
+        setLoader(false)
+        setCards(getData.data)
+        
+      }
     }
 
     // GETTING TRANSACTION DATA
@@ -61,8 +65,9 @@ var currentMinute = currentTime.getMinutes();
 
 
   return (
-
     <div className="flex-1 bg-[#f6fdff] lg:px-10 md:px-5 overflow-auto ">
+      {loader ? <LoaderComp/> : ''}
+      
       <Topbar title={"Dashboard"} username={data}/>
       <TransferModal openTransferModal={openTrasnfer} closeTrasnferModal={handleTransferClose} />
       <DepositModal openModal={open} closeModal={handleClose} />
@@ -89,7 +94,7 @@ var currentMinute = currentTime.getMinutes();
               {/* <LineChart /> */}
               {
                 cards && cards?.map((card,index)=>{
-                    return cards.length >=1 && <Atm detail={card}/>
+                    return  cards.length >=1 && <Atm detail={card}/>
                 })
               }
               {cards.length <= 0 ? "No cards Available" : ''}
