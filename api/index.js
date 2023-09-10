@@ -13,29 +13,25 @@ const notificationRoutes = require("./routes/notificationRoute")
 
 const app = express()
 dotenv.config()
-const customHeaders = {
-    'Custom-Header-1': 'Value1',
-    'Custom-Header-2': 'Value2',
-  };
+const corsOptions = {
+    origin: ['*','https://sawyerserver.onrender.com','https://sawyerbank.onrender.com/','http://localhost:5173/'],
+    methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
+    credentials: true,
+};;
 
 // MIDDLEWARES
 app.use(express.json())
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"); // Allow requests from any origin (you can specify specific origins instead of '*')
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT,PATCH, DELETE, OPTIONS"); // Allow the specified HTTP methods
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-    ); // Allow the specified headers
-    next();  
-});
-// app.use(cors({
-//     origin: ['*','https://sawyerbank.onrender.com/','http://localhost:5173/'],
-//     credentials : true,
-//     methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS', // Allow the specified HTTP methods
-//     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization', // Allow the specified headers
-// }))
-
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "*"); // Allow requests from any origin (you can specify specific origins instead of '*')
+//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT,PATCH, DELETE, OPTIONS"); // Allow the specified HTTP methods
+//     res.header(
+//       "Access-Control-Allow-Headers",
+//       "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//     ); // Allow the specified headers
+//     next();  
+// });
+app.use(cors(corsOptions));
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -48,6 +44,7 @@ app.use('/transaction',transactionRoutes)
 app.use('/card',cardRoutes)
 app.use('/notification',notificationRoutes)
 
-app.listen(process.env.PORT, ()=>{
+const PORT = process.env.PORT || 5000;
+app.listen(PORT , ()=>{
     console.log('Server connected')
 })

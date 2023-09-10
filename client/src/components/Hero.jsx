@@ -15,7 +15,6 @@ const Hero = () => {
 
   const handleLogin=(e)=>{
     e.preventDefault()
-    console.log(logins)
     const login = async()=>{
       let getData = await axios.post(`${APIURL}/user/login`, {...logins} )
       .then(res=>{
