@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route, RouterProvider, createBrowserRo
 import Dashbaord from './pages/Dashbaord'
 import Accounts from './pages/Accounts'
 import Cards from './pages/Cards'
-import Sidebar from './components/Sidebar'
 import Transactions from './pages/Transactions'
 import Home from './pages/Home';
 import Layout from './layout/layout';
