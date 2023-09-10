@@ -26,7 +26,10 @@ const accountSchema = mongoose.Schema({
     },
     accountNumber : {
         type : String,
-        default : '3210XXXXX',
+        default : function(){
+            const randomDigit = Math.floor(Math.random() * 10).toString();
+            return randomDigit;
+        },
         unique : true,
         required:true,
     },
