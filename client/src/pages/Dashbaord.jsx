@@ -57,8 +57,7 @@ var currentMinute = currentTime.getMinutes();
       }
     }
 
-    // GETTING TRANSACTION DATA
-    
+
     getAcc()
     getCards()
   },[data,cards,currentTime])
@@ -81,17 +80,16 @@ var currentMinute = currentTime.getMinutes();
 
       {/* content here */}
       <div className="mt-2 mb-5 mx-2">
+            {/* cards */}
+            <div className="grid lg:grid-cols-4 md:grid-cols-2 md:gap-2" >
+              <BalanceCard title={"Available Balance"} amount={data?.balance} currency={data?.currency} bkg={'red-00'} txt={'black'}/>
+              <BalanceCard title={"Savings"} amount={data?.total} currency={data?.currency} bkg={'card-bg'}/>
+              <BalanceCard title={"Fixed Deposit"} amount={data?.loanBalance}  currency={data?.currency} bkg={'card-bg'}/>
+              <BalanceCard title={"Stock"} amount={data?.stock}  currency={data?.currency} bkg={'card-bg'}/>
+            </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-1 md:gap-5 ">
           <div className="md:col-span-2 md:order-first">
-            {/* cards */}
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 md:gap-2" >
-              <BalanceCard title={"Available Balance"} amount={data?.balance} currency={data?.currency}/>
-              <BalanceCard title={"Savings"} amount={data?.total} currency={data?.currency}/>
-              <BalanceCard title={"Fixed Deposit"} amount={data?.loanBalance}  currency={data?.currency}/>
-              <BalanceCard title={"Stock"} amount={data?.stock}  currency={data?.currency}/>
-            </div>
-
-            <div className="lg:py-5 rounded-md md:col-span-2 grid md:grid-cols-2 gap-3">
+            <div className="lg:py-5 bg-white rounded-md md:col-span-2 grid md:grid-cols-2 gap-3">
               {/* <LineChart /> */}
               {
                 cards && cards?.map((card,index)=>{
@@ -102,7 +100,6 @@ var currentMinute = currentTime.getMinutes();
              
             </div>
             
-
             {/* transaction history */}
             <div className="md:mb-10 mb-20 my-5 bg-white p-4 shadow-lg rounded-lg">
               <p className="text-xl text-slate-500 w-full">Recent Activities</p>

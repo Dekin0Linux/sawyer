@@ -5,7 +5,20 @@ import LoaderComp from "./Loader";
 
 function Table() {
   const [activites, setActivites] = useState([]);
-  const [loader, setLoader] = useState([]);
+  const [loader, setLoader] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+
+const indexOfLastItem = currentPage * itemsPerPage;
+const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+const reversedData = activites.reverse();
+const currentItems = reversedData.slice(indexOfFirstItem, indexOfLastItem);
+
+const pageNumbers = [];
+for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
+  pageNumbers.push(i);
+}
+
 
   useEffect(() => {
     let clientid = localStorage.getItem("token");
@@ -56,12 +69,12 @@ function Table() {
         </thead>
 
         <tbody className="bg-white divide-y divide-gray-200 text-lg">
-          {activites &&
-            activites?.map((eachData, index) => {
+          {currentItems &&
+            currentItems?.map((eachData, index) => {
               return (
                 <tr key={index}>
                   <td className="md:px-6 px-2 py-4 whitespace-nowrap">
-                    {new Date(eachData?.date).toLocaleDateString()}
+                    {eachData?.date}
                   </td>
                   <td className="md:px-6 px-2 py-4 whitespace-nowrap ">
                     {eachData.type}
@@ -84,8 +97,19 @@ function Table() {
                 </tr>
               );
             })}
+            {/* pagination */}
+            
+            
         </tbody>
       </table>
+      <ul className="flex justify-end">
+          {pageNumbers.map(number => (
+                <li key={number} className="px-3 border "  onClick={() => setCurrentPage(number)}>
+                  <button>{number}</button>
+                </li>
+          ))}
+        </ul>
+      
       {activites.length <= 0 ? <p className="text-center text-xl font-bold p-10 text-red-500">No Activities</p> : ''}
     </div>
   );
