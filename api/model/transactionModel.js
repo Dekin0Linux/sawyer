@@ -15,13 +15,10 @@ const transactionSchema = mongoose.Schema({
     },
     currency:{
         type :String,
-        trim : true,
-        lowercase : true,
         default : '$'
     },
     type : {
         type : String,
-        enum : ['Deposit','Withdraw','Transfer'],
         required:true,
     },
     status:{
@@ -30,8 +27,7 @@ const transactionSchema = mongoose.Schema({
         default: 'Pending'
     },
     date :{
-        type : Date,
-        default : new Date()
+        type : String,
     }
 },{timestamps:true})
 
