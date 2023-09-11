@@ -85,7 +85,6 @@ for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
                   </td>
                   <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md sm:truncate-sm">
                     {truncateText(eachData.type, 4)}
-                    
                   </td>
                   <td className="sm:truncate-sm md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md ">
                     {eachData.currency}{" "}
