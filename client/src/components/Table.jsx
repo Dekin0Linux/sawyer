@@ -16,7 +16,8 @@ function Table() {
         clientid,
       });
       setLoader(false);
-      setActivites(getData.data);
+      const reversedData = getData.data.reverse();
+      setActivites(reversedData);
     };
 
     getActivity();

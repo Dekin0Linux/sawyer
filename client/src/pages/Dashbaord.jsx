@@ -88,6 +88,7 @@ var currentMinute = currentTime.getMinutes();
               <BalanceCard title={"Available Balance"} amount={data?.balance} currency={data?.currency}/>
               <BalanceCard title={"Savings"} amount={data?.total} currency={data?.currency}/>
               <BalanceCard title={"Fixed Deposit"} amount={data?.loanBalance}  currency={data?.currency}/>
+              <BalanceCard title={"Stock"} amount={data?.stock}  currency={data?.currency}/>
             </div>
 
             <div className="lg:py-5 rounded-md md:col-span-2 grid md:grid-cols-2 gap-3">

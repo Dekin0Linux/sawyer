@@ -13,7 +13,7 @@ const CardSchema = mongoose.Schema({
         unique : true
     },
     cardType : {
-        
+        type : String,
     },
     currency:{
         type :String,
