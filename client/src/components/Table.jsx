@@ -14,6 +14,13 @@ const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 const reversedData = activites.reverse();
 const currentItems = reversedData.slice(indexOfFirstItem, indexOfLastItem);
 
+function truncateText(text, maxLength) {
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return text.substring(0, maxLength) + '...';
+}
+
 const pageNumbers = [];
 for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
   pageNumbers.push(i);
@@ -34,11 +41,11 @@ for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
     };
 
     getActivity();
-  }, [activites]);
+  }, []);
   return (
-    <div className="rounded-lg w-full bg-white">
+    <div className="rounded-lg md:w-full bg-white">
       {loader ? <LoaderComp/> : ''}
-      <table className="min-w-full divide-y divide-gray-200">
+      <table className="w-full divide-y divide-gray-200">
         <thead className="bg-gray-50 ">
           <tr>
             <th
@@ -73,24 +80,26 @@ for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
             currentItems?.map((eachData, index) => {
               return (
                 <tr key={index}>
-                  <td className="md:px-6 px-2 py-4 whitespace-nowrap">
+                  <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md">
                     {eachData?.date}
                   </td>
-                  <td className="md:px-6 px-2 py-4 whitespace-nowrap ">
-                    {eachData.type}
+                  <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md sm:truncate-sm">
+                    {truncateText(eachData.type, 4)}
+                    
                   </td>
-                  <td className="md:px-6 px-2 py-4 whitespace-nowrap">
+                  <td className="sm:truncate-sm md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md ">
                     {eachData.currency}{" "}
-                    {eachData.amount
+                    {truncateText(eachData.amount
                       ?.toFixed(2)
-                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,"), 7)}
                   </td>
                   <td
-                    className={`md:px-6 py-4 whitespace-nowrap font-bold  ${
+                    className={`md:px-6 py-4 whitespace-nowrap font-bold text-sm md:text-md  ${
                       eachData?.status == "Success"
                         ? "text-green-500"
                         : "text-red-500"
                     }`}
+                    
                   >
                     {eachData.status}
                   </td>
@@ -102,7 +111,7 @@ for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
             
         </tbody>
       </table>
-      <ul className="flex justify-end">
+        <ul className="flex justify-end">
           {pageNumbers.map(number => (
                 <li key={number} className="px-3 border "  onClick={() => setCurrentPage(number)}>
                   <button>{number}</button>

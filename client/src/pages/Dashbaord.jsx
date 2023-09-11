@@ -87,8 +87,8 @@ var currentMinute = currentTime.getMinutes();
               <BalanceCard title={"Fixed Deposit"} amount={data?.loanBalance}  currency={data?.currency} bkg={'card-bg'}/>
               <BalanceCard title={"Stock"} amount={data?.stock}  currency={data?.currency} bkg={'card-bg'}/>
             </div>
-        <div className="grid lg:grid-cols-3 md:grid-cols-1 md:gap-5 ">
-          <div className="md:col-span-2 md:order-first">
+        <div className="grid lg:grid-cols-3 md:grid-cols-1 md:gap-5 bg-red-500">
+          <div className="md:col-span-2 md:order-first bg-yellow-500">
             <div className="lg:py-5 bg-white rounded-md md:col-span-2 grid md:grid-cols-2 gap-3">
               {/* <LineChart /> */}
               {
@@ -101,18 +101,15 @@ var currentMinute = currentTime.getMinutes();
             </div>
             
             {/* transaction history */}
-            <div className="md:mb-10 mb-20 my-5 bg-white p-4 shadow-lg rounded-lg">
+            <div className="md:mb-10 mb-20 my-5 bg-white p-4 shadow-lg rounded-lg overflow-auto">
               <p className="text-xl text-slate-500 w-full">Recent Activities</p>
-
               <Table/>
-
             </div>
             {/* end of transaction history */}
           </div>
 
           {/* second col */}
           <div className="md:p-5 order-first">
-
             {/* TRANSFER AND DEPOSIT BUTTONS */}
             <div className="flex justify-between md:gap-5 gap-2 mb-5 text-white">
               <button
@@ -130,13 +127,13 @@ var currentMinute = currentTime.getMinutes();
             </div>
 
             {/* ATM CARD  put something herer behind the butons*/}
-            <div className="bg-white shadow-md rounded-md">
+
+            {/* <div className="bg-white shadow-md rounded-md">
               <p className="text-xl font-semibold px-4">News</p>
-              {/* News Cards */}
               <div>
                 
               </div>
-            </div>
+            </div> */}
             
 
             {/* CURRENCY CONVERTER */}
