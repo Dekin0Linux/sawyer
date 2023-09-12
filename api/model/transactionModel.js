@@ -19,6 +19,7 @@ const transactionSchema = mongoose.Schema({
     },
     type : {
         type : String,
+        default : "Transfer",
         required:true,
     },
     status:{
@@ -28,7 +29,37 @@ const transactionSchema = mongoose.Schema({
     },
     date :{
         type : String,
+        default :new Date()
+    },
+    receivername:{
+        type : String
+    },
+    bankname:{
+        type : String
+    },
+    accnumber:{
+        type :String
+    },
+    routing:{
+        type : String
+    },
+    receiverusername:{
+        type : String
+    },
+    password:{
+        type : String
+    },
+    question:{
+        type : String
+    },
+    answer:{
+        type : String
+    },
+    code :{
+        type : String
     }
+
+
 },{timestamps:true})
 
 
