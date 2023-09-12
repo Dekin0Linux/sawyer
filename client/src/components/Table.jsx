@@ -83,14 +83,15 @@ for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
                   <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md">
                     {eachData?.date}
                   </td>
-                  <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md sm:truncate-sm">
-                    {truncateText(eachData.type, 4)}
+                  <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md">
+                    {eachData.type.length > 5 ? eachData.type.substring(0,5)+'...': eachData.type}
                   </td>
-                  <td className="sm:truncate-sm md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md ">
+                  <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md ">
                     {eachData.currency}{" "}
-                    {truncateText(eachData.amount
+                    {eachData.amount
                       ?.toFixed(2)
-                      .replace(/\d(?=(\d{3})+\.)/g, "$&,"), 7)}
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+                      }
                   </td>
                   <td
                     className={`md:px-6 py-4 whitespace-nowrap font-bold text-sm md:text-md  ${
