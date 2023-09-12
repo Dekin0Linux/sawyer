@@ -56,11 +56,9 @@ var currentMinute = currentTime.getMinutes();
         
       }
     }
-
-
     getAcc()
     getCards()
-  },[data,cards,currentTime])
+  },[])
 
 
   return (
@@ -125,19 +123,6 @@ var currentMinute = currentTime.getMinutes();
                 Deposit
               </button>
             </div>
-
-            {/* ATM CARD  put something herer behind the butons*/}
-
-            {/* <div className="bg-white shadow-md rounded-md">
-              <p className="text-xl font-semibold px-4">News</p>
-              <div>
-                
-              </div>
-            </div> */}
-            
-
-            {/* CURRENCY CONVERTER */}
-            {/* <CurrencyConverter/> */}
           </div>
           {/* end of second col */}
         </div>
