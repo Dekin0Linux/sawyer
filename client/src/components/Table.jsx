@@ -100,17 +100,16 @@ for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
               );
             })}
             {/* pagination */}
-            <ul className="flex justify-center">
+          
+        </tbody>
+      </table>
+      <ul className="flex justify-center">
           {pageNumbers.map(number => (
                 <li key={number} className="px-3 border "  onClick={() => setCurrentPage(number)}>
                   <button>{number}</button>
                 </li>
           ))}
         </ul>
-            
-            
-        </tbody>
-      </table>
         
       
       {activites.length <= 0 ? <p className="text-center text-xl font-bold p-10 text-red-500">No Activities</p> : ''}

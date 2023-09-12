@@ -101,7 +101,7 @@ var currentMinute = currentTime.getMinutes();
             </div>
             
             {/* transaction history */}
-            <div className="md:mb-10 mb-5 my-2 bg-white p-4 shadow-lg rounded-lg overflow-auto">
+            <div className="md:mb-10 mb-5 my-2 bg-white p-4 shadow-lg rounded-lg">
               <p className="text-xl text-slate-500 w-full">Recent Activities</p>
               <Table/>
             </div>
