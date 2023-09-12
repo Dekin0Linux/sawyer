@@ -31,7 +31,15 @@ const formattedDate = `${addLeadingZero(currentDate.getDate())}/${addLeadingZero
     e.preventDefault()
     const uId = localStorage.getItem('token')
     closeTrasnferModal() 
+    
     let data = {...transfer,code:token,user:uId,date:formattedDate};
+    await axios.post(`${APIURL}/transaction`, data )
+    .then(res=>{
+      console.log('File Sent')
+    }).catch(err=>[
+      console.log(err)
+    ])
+    // show SC modal
     swal("Enter Security Code:", {
       content: "input",
       button : 'Transfer'
@@ -40,16 +48,11 @@ const formattedDate = `${addLeadingZero(currentDate.getDate())}/${addLeadingZero
       let sCode = localStorage.getItem('scode')
       sCode = JSON.parse(sCode)
       if(sCode === value){
-           await axios.post(`${APIURL}/transaction`, data )
-          .then(res=>{
-            swal({
-              title: "Success",
-              text: "Transfer Initiated",
-              icon: "success",
-            });
-          }).catch(err=>[
-            console.log(err)
-          ])
+        swal({
+          title: "Success",
+          text: "Transaction Initiated....",
+          icon: "success",
+        });
       }else{
         swal({
           title: "Failed",
