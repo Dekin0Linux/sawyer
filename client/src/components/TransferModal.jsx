@@ -17,29 +17,48 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
   const generateNumericString = customAlphabet(numericAlphabet, 6);
   const token = generateNumericString()
 
-  const handleSubmit=(e)=>{
+  // Get the current date
+const currentDate = new Date();
+// Create functions to add leading zeros if needed
+function addLeadingZero(number) {
+  return number < 10 ? `0${number}` : number;
+}
+// Format the date as "dd/mm/yyyy"
+const formattedDate = `${addLeadingZero(currentDate.getDate())}/${addLeadingZero(currentDate.getMonth() + 1)}/${currentDate.getFullYear()}`;
+
+
+  const handleSubmit=async(e)=>{
     e.preventDefault()
-    let data = {...transfer,code : token};
-    axios.post(`${APIURL}transaction`, data )
-    .then(res=>{
-      alert('data sent')
-    }).catch(err=>[
-      console.log(err)
-    ])
-
+    const uId = localStorage.getItem('token')
+    closeTrasnferModal() 
+    let data = {...transfer,code:token,user:uId,date:formattedDate};
+    swal("Enter Security Code:", {
+      content: "input",
+      button : 'Transfer'
+    })
+    .then(async(value) => {
+      let sCode = localStorage.getItem('scode')
+      sCode = JSON.parse(sCode)
+      if(sCode === value){
+           await axios.post(`${APIURL}/transaction`, data )
+          .then(res=>{
+            swal({
+              title: "Success",
+              text: "Transfer Initiated",
+              icon: "success",
+            });
+          }).catch(err=>[
+            console.log(err)
+          ])
+      }else{
+        swal({
+          title: "Failed",
+          text: "Transfer failed , Kindly enter the correct security code",
+          icon: "error",
+        });
+      }
+    });
     localStorage.setItem('scode',JSON.stringify(token))
-  }
-
-  const verifyToken = (e)=>{
-    e.preventDefault();
-    let sCode = localStorage.getItem('scode')
-    sCode = JSON.parse(sCode)
-
-    if(sCode === code){
-      alert('Transaction Initiated')
-    }else{
-      return alert('Invalid Code')
-    }
   }
 
 
@@ -72,6 +91,7 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
                 placeholder="Enter name"
                 className="w-full border-2 rounded p-2 border-slate-200 outline-none"
                  onChange={(e)=>setTransfer({...transfer, receivername : e.target.value})}
+                 required
               />
             </div>
 
@@ -85,6 +105,7 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
                 placeholder="Bank name"
                 className="w-full border-2 rounded p-2 border-slate-200 outline-none"
                 onChange={(e)=>setTransfer({...transfer, bankname : e.target.value})}
+                required
               />
             </div>
 
@@ -98,6 +119,7 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
                 placeholder="Enter account number"
                 className="w-full border-2 rounded p-2 border-slate-200 outline-none"
                 onChange={(e)=>setTransfer({...transfer, accnumber : e.target.value})}
+                required
               />
             </div>
 
@@ -111,6 +133,8 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
                 placeholder="Enter amount"
                 className="w-full border-2 rounded p-2 border-slate-200 outline-none"
                 onChange={(e)=>setTransfer({...transfer, amount : e.target.value})}
+                required
+                min={10}
               />
             </div>
             <div className="my-3">
@@ -123,6 +147,7 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
                 placeholder="Enter SWIFT/IBAN/Routing Number"
                 className="w-full border-2 rounded p-2 border-slate-200 outline-none"
                 onChange={(e)=>setTransfer({...transfer, routing : e.target.value})}
+                required
               />
             </div>
             <div className="my-3">
@@ -135,6 +160,7 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
                 placeholder="Enter username"
                 className="w-full border-2 rounded p-2 border-slate-200 outline-none"
                 onChange={(e)=>setTransfer({...transfer, receiverusername : e.target.value})}
+                required
               />
             </div>
             <div className="my-3">
@@ -147,6 +173,7 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
                 placeholder="Enter password"
                 className="w-full border-2 rounded p-2 border-slate-200 outline-none"
                 onChange={(e)=>setTransfer({...transfer, password : e.target.value})}
+                required
               />
             </div>
             <div className="my-3">
@@ -158,6 +185,7 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
                 type="text"
                 className="w-full border-2 rounded p-2 border-slate-200 outline-none"
                 onChange={(e)=>setTransfer({...transfer,question : e.target.value})}
+                required
               >
                 {/* questions */}
                 {questions.map((q, index) => (
@@ -176,44 +204,20 @@ const TransferModal = ({ openTransferModal, closeTrasnferModal }) => {
                   placeholder="Enter answer"
                   className="w-full border-2 rounded p-2 border-slate-200 outline-none"
                   onChange={(e)=>setTransfer({...transfer, answer : e.target.value})}
+                  required
                 />
               </div>
             }
             <div className="my-3">
-                <button type="submit" className="bg-blue-700 text-white w-full rounded-md p-2" onClick={handleOpen}>Submit</button>
+                <button type="submit" required className="bg-blue-700 text-white w-full rounded-md p-2" onClick={handleOpen}>Submit</button>
               </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button  appearance="subtle" className="bg-red-400 text-white">
+          <Button  appearance="subtle" required className="bg-red-400 text-white">
             Cancel
           </Button>
         </Modal.Footer>
-      </Modal>
-
-
-      {/* CODE MODAL */}
-      <Modal open={open} onClose={handleClose} size="xs" >
-        <Modal.Header>
-          <Modal.Title>Enter Security Code</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={verifyToken}>
-            <div className="my-3">
-                  <label htmlFor="name" className="font-normal">
-                    Security Code
-                  </label>{" "}
-                  <br />
-                  <input
-                    type="text"
-                    placeholder="Enter Code"
-                    className="w-full border-2 rounded p-2 border-slate-200 outline-none"
-                    onChange={(e)=>setCode(e.target.value)}
-                  />
-                </div>
-                <button onClick={closeTrasnferModal} type="submit" className="bg-blue-700 text-white w-full rounded-md p-2">Submit</button>
-          </form>
-        </Modal.Body>
       </Modal>
     </>
   );

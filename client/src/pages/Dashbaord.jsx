@@ -91,7 +91,7 @@ var currentMinute = currentTime.getMinutes();
               {/* <LineChart /> */}
               {
                 cards && cards?.map((card,index)=>{
-                    return  cards.length >=1 && <Atm detail={card}/>
+                    return  cards.length >=1 && <Atm detail={card} key={index}/>
                 })
               }
               {cards.length <= 0 ? "No cards Available" : ''}
