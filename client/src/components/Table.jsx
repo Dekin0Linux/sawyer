@@ -14,18 +14,10 @@ const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 const reversedData = activites.reverse();
 const currentItems = reversedData.slice(indexOfFirstItem, indexOfLastItem);
 
-function truncateText(text, maxLength) {
-  if (text.length <= maxLength) {
-    return text;
-  }
-  return text.substring(0, maxLength) + '...';
-}
-
 const pageNumbers = [];
 for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
   pageNumbers.push(i);
 }
-
 
   useEffect(() => {
     let clientid = localStorage.getItem("token");
@@ -41,7 +33,8 @@ for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
     };
 
     getActivity();
-  }, []);
+  },[]);
+
   return (
     <div className="rounded-lg md:w-full bg-white">
       {loader ? <LoaderComp/> : ''}
@@ -107,17 +100,18 @@ for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
               );
             })}
             {/* pagination */}
-            
-            
-        </tbody>
-      </table>
-        <ul className="flex justify-end">
+            <ul className="flex justify-center">
           {pageNumbers.map(number => (
                 <li key={number} className="px-3 border "  onClick={() => setCurrentPage(number)}>
                   <button>{number}</button>
                 </li>
           ))}
         </ul>
+            
+            
+        </tbody>
+      </table>
+        
       
       {activites.length <= 0 ? <p className="text-center text-xl font-bold p-10 text-red-500">No Activities</p> : ''}
     </div>
