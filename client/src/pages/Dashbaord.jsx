@@ -58,7 +58,7 @@ var currentMinute = currentTime.getMinutes();
     }
     getAcc()
     getCards()
-  },[data,currentTime,cards])
+  },[])
 
 
   return (
