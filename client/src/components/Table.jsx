@@ -11,9 +11,9 @@ function Table() {
   const [active, setActive] = useState(1);
 
   const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const reversedData = activites.reverse();
-    const currentItems = reversedData.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // const reversedData = activites.reverse();
+  const currentItems = activites.slice(indexOfFirstItem, indexOfLastItem);
 
  
 
@@ -107,6 +107,7 @@ function Table() {
               );
             })}
           {/* pagination */}
+          
         </tbody>
       </table>
       <ul className="flex justify-center gap-1">
@@ -123,6 +124,9 @@ function Table() {
           </li>
         ))}
       </ul>
+
+
+     
 
       {pageNumbers?.length <= 0 ? (
         <p className="text-center text-xl font-bold p-10 text-red-500">
