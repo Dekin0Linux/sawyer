@@ -11,9 +11,11 @@ function Table() {
   const [active, setActive] = useState(1);
 
   const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const reversedData = activites.reverse();
-  const currentItems = reversedData.slice(indexOfFirstItem, indexOfLastItem);
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const reversedData = activites.reverse();
+    const currentItems = reversedData.slice(indexOfFirstItem, indexOfLastItem);
+
+ 
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(activites.length / itemsPerPage); i++) {
@@ -21,6 +23,10 @@ function Table() {
   }
 
   useEffect(() => {
+    
+
+
+    //REDDIRECT USER IF THE TOKEN IS NOT AVAILABLE
     let clientid = localStorage.getItem("token");
     !clientid ? (window.location = "/") : "";
     // GETTING CARD DATA
@@ -104,7 +110,7 @@ function Table() {
         </tbody>
       </table>
       <ul className="flex justify-center gap-1">
-        {pageNumbers.map((number) => (
+        {pageNumbers?.map((number) => (
           <li
             key={number}
             className={`px-3 border ${active == number ? "bg-blue-300" : ""} rounded-full`}
@@ -118,7 +124,7 @@ function Table() {
         ))}
       </ul>
 
-      {activites.length <= 0 ? (
+      {pageNumbers?.length <= 0 ? (
         <p className="text-center text-xl font-bold p-10 text-red-500">
           No Activities
         </p>
