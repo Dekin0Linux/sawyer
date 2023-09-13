@@ -46,24 +46,22 @@ function Accounts() {
               Account Status : {user?.status}
             </li>
             <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">
-              Phone : {user?.user?.phone}
+              Phone : {user?.user?.phone || 'N/A'}
             </li>
           </ul>
         </div>
-        <div>
+        {/* <div>
           <h3 className="md:text-xl text-lg md:py-3">Contact Us</h3>
           <ul class=" text-lg font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-              email : {user?.user?.firstname} {user?.user?.lastname}
+              email : info@sawyerbank.com
             </li>
             <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
               phone: {user?.user?.email}
             </li>
-            <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">
-              Account Number : {user.accountNumber}
-            </li>
+          
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );

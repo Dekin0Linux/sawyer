@@ -34,7 +34,7 @@ function Table() {
     };
 
     getActivity();
-  }, []);
+  }, [activites]);
 
   return (
     <div className="rounded-lg md:w-full bg-white">
