@@ -7,7 +7,7 @@ function Table() {
   const [activites, setActivites] = useState([]);
   const [loader, setLoader] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [active, setActive] = useState(1);
 
   const indexOfLastItem = currentPage * itemsPerPage;
