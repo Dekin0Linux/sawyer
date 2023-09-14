@@ -23,11 +23,13 @@ const Hero = () => {
           if(res.status === 200){
               localStorage.setItem("token", res?.data);
               navigate('/dashboard',{replace:true})
+              setLoading(false)
           }
       }).catch(err=>{
         setErrorMsg(err.message)
         setError(true)
         setErrorMsg('Invalid Credentials')
+        setLoading(false)
       })
 
     }
@@ -63,7 +65,7 @@ const Hero = () => {
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
-                    required=""
+                    required
                     onChange={e=>setLogins({...logins,email:e.target.value})}
                     onFocus={()=>setError(false)}
                   />
@@ -81,7 +83,7 @@ const Hero = () => {
                     id="password"
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required=""
+                    required
                     onChange={e=>setLogins({...logins,password:e.target.value})}
                     onFocus={()=>setError(false)}
                   />
