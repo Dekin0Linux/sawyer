@@ -12,7 +12,7 @@ const Footer = () => (
           className="w-[266px] h-[72.14px] object-contain"
         />
         <p className={`${styles.paragraph} mt-4 max-w-[312px]`}>
-          A new way to make the payments easy, reliable and secure.
+          A new way to make to bank. Easy, Reliable and Secure.
         </p>
       </div>
 
@@ -44,7 +44,7 @@ const Footer = () => (
         Copyright Ⓒ 2022 SawyerBank. All Rights Reserved.
       </p>
 
-      <div className="flex flex-row md:mt-0 mt-6">
+      {/* <div className="flex flex-row md:mt-0 mt-6">
         {socialMedia.map((social, index) => (
           <img
             key={social.id}
@@ -56,7 +56,7 @@ const Footer = () => (
             onClick={() => window.open(social.link)}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   </section>
 );

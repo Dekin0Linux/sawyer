@@ -17,6 +17,10 @@ export const navLinks = [
     id: "clients",
     title: "Clients",
   },
+  {
+    id: "contact",
+    title: "Contact us",
+  },
 ];
 
 export const features = [
@@ -84,7 +88,7 @@ export const stats = [
   {
     id: "stats-3",
     title: "Transaction",
-    value: "$230M+",
+    value: "$280M+",
   },
 ];
 
