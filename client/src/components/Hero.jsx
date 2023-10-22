@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import styles from "../style";
-import { discount, robot,family } from "../assets";
+import { discount, robot,family,imac } from "../assets";
 import { GetStarted } from "./index";
 import axios from "axios";
 import APIURL from "../apiUrl";
@@ -42,8 +42,8 @@ const Hero = () => {
       id="home"
       className={`flex md:flex-row flex-col ${styles.paddingY}`}
     >
-      <section className="flex-1 flex justify-start items-start flex-col xl:px-0 sm:px-16 px-6 ">
-        <div className="w-full">
+      <section className="flex-1 flex justify-center items-center flex-col xl:px-0 sm:px-16 px-6 ">
+        <div className="">
           <div className=" bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -88,14 +88,6 @@ const Hero = () => {
                     onFocus={()=>setError(false)}
                   />
                 </div>
-                {/* <div className="flex items-center justify-between">
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div> */}
                 <button
                   type="submit"
                   className="w-full text-white bg-blue-400 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
@@ -112,7 +104,7 @@ const Hero = () => {
         className={`flex-1 flex ${styles.flexCenter} md:mr-0  my-10 relative`}
       >
         <img
-          src={family}
+          src={imac}
           className="w-[100%] h-[100%] relative z-[5]"
           alt=""
         />
