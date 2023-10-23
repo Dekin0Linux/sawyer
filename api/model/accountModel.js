@@ -41,6 +41,10 @@ const accountSchema = mongoose.Schema({
         type : Number,
         default: 0
     },
+    stock : {
+        type : Number,
+        default: 0
+    },
     status:{
         type: String,
         enum :["Active","Inactive"],// Active and Inactive Status for the accounts
