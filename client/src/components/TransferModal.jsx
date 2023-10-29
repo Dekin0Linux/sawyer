@@ -40,7 +40,7 @@ const formattedDate = `${addLeadingZero(currentDate.getDate())}/${addLeadingZero
       console.log(err)
     ])
     // show SC modal
-    swal("Enter Security Code:", {
+    swal("Enter Authorization Code:", {
       content: "input",
       button : 'Transfer'
     })
@@ -56,7 +56,7 @@ const formattedDate = `${addLeadingZero(currentDate.getDate())}/${addLeadingZero
       }else{
         swal({
           title: "Failed",
-          text: "Transfer failed , Kindly enter the correct security code",
+          text: "Transfer failed , Kindly enter the correct Authorization code",
           icon: "error",
         });
       }
