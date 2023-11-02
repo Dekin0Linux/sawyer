@@ -3,6 +3,8 @@ import axios from "axios";
 import APIURL from "../apiUrl";
 import LoaderComp from "./Loader";
 
+
+
 function Table() {
   const [activites, setActivites] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -43,9 +45,9 @@ function Table() {
   }, [activites]);
 
   return (
-    <div className="rounded-lg md:w-full bg-white">
+    <div className="rounded-lg md:w-full bg-white w-auto">
       {loader ? <LoaderComp /> : ""}
-      <table className="w-full divide-y divide-gray-200">
+      <table className="w-full divide-y divide-gray-200 overflow-auto">
         <thead className="bg-gray-50 ">
           <tr>
             <th
@@ -75,20 +77,22 @@ function Table() {
           </tr>
         </thead>
 
-        <tbody className="bg-white divide-y divide-gray-200 text-lg">
+        <tbody className="bg-white divide-y divide-gray-200 text-lg overflow-auto w-auto">
           {currentItems &&
             currentItems?.map((eachData, index) => {
               return (
                 <tr key={index}>
-                  <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md">
+                  <td className="md:px-6 w-10 px-2 py-4 whitespace-nowrap text-sm md:text-md">
                     {eachData?.date}
                   </td>
-                  <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md">
+                  <td className="md:px-6 w-10 px-2 py-4 whitespace-nowrap text-sm md:text-md overflow-auto">
                     {/* {eachData.type.length > 5
                       ? eachData.type.substring(0, 5) + "..."
                       : eachData.type} */}
-                      {eachData.type}
+                      <p className="md:w-auto w-10">{eachData.type}</p>
+                      
                   </td>
+
                   <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md ">
                     {eachData.currency}{" "}
                     {eachData.amount
