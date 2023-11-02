@@ -84,9 +84,10 @@ function Table() {
                     {eachData?.date}
                   </td>
                   <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md">
-                    {eachData.type.length > 5
+                    {/* {eachData.type.length > 5
                       ? eachData.type.substring(0, 5) + "..."
-                      : eachData.type}
+                      : eachData.type} */}
+                      {eachData.type}
                   </td>
                   <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md ">
                     {eachData.currency}{" "}
