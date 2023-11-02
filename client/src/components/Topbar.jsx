@@ -9,7 +9,7 @@ function Topbar({title,username}) {
           <p className='md:font-bold text-xl'>{title}</p>
       </div>
       <div className='inline-flex gap-2 items-center'>
-        <p>{username?.user?.firstname} {username?.user?.lastname}</p>
+        {/* <p>{username?.user?.firstname} {username?.user?.lastname}</p> */}
         <div className='w-7 h-7 rounded-md border flex justify-center items-center'><FcSms/></div>
         <Link to='/'>
         <div className='w-7 h-7 bg-slate-400 rounded-full border-white border-2 shadow-md'></div>
