@@ -31,7 +31,7 @@ function Accounts() {
       <div className="">
         <h2 className="text-slate-400 font-semibold md:text-3xl">User Profile</h2>
 
-        <div className="flex flex-wrap gap-10  bg-white md:mb-20 mb-20 mt-5 md:p-10 p-5 rounded-md shadow-sm">
+        <div className="flex flex-wrap gap-10 md:w-1/2  bg-white md:mb-20 mb-20 mt-5 md:p-10 p-5 rounded-md shadow-sm">
           <div className="w-full">
             <img src={profile} alt="profile-img" width={150}/>
           </div>
