@@ -45,7 +45,7 @@ const formattedDate = `${addLeadingZero(currentDate.getDate())}/${addLeadingZero
       button : 'Transfer'
     })
     .then(async(value) => {
-      let sCode = localStorage.getItem('scode')
+      let sCode = localStorage.getItem('scode') //get code stored in localstorage
       sCode = JSON.parse(sCode)
       if(sCode === value){
         swal({

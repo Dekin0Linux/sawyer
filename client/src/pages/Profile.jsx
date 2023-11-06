@@ -22,7 +22,7 @@ function Profile() {
         <div className='flex-1 bg-[#f6fdff] md:px-16 px-5 overflow-auto'>
             <Topbar title={'Profile'}/>
 
-            <div className=' flex md:h-1/2 bg-blue-400'>
+            {/* <div className=' flex md:h-1/2 bg-blue-400'>
                     <div className='bg-white md:p-10 p-5 shadow w-["100%"]'>
                         <p>Name : <span>sfsdfasfasdfsdf</span></p>
                         <p>Email : <span>sfsdfasfasdfsdf</span></p>
@@ -31,7 +31,7 @@ function Profile() {
                         <p>Name : <span>sfsdfasfasdfsdf</span></p>
                         
                     </div>
-            </div>
+            </div> */}
         </div>
       )
 }

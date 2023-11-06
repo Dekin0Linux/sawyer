@@ -47,9 +47,9 @@ function Table() {
   return (
     <div className="rounded-lg md:w-full bg-white w-auto">
       {loader ? <LoaderComp /> : ""}
-      <table className="w-full divide-y divide-gray-200 overflow-auto">
-        <thead className="bg-gray-50 ">
-          <tr>
+      <table className="w-full border divide-y divide-gray-200 overflow-auto">
+        <thead className="bg-gray-50">
+          <tr className="">
             <th
               scope="col"
               className="md:px-6 px-2 py-3 text-left text-md font-bold text-gray-500 uppercase tracking-wider"
@@ -82,10 +82,10 @@ function Table() {
             currentItems?.map((eachData, index) => {
               return (
                 <tr key={index}>
-                  <td className="md:px-6 w-10 px-2 py-4 whitespace-nowrap text-sm md:text-md">
+                  <td className="md:px-6 w-10 lg:w-auto px-2 py-4 whitespace-nowrap text-sm md:text-md">
                     {eachData?.date}
                   </td>
-                  <td className="md:px-6 w-10 px-2 py-4 whitespace-nowrap text-sm md:text-md overflow-auto">
+                  <td className="md:px-6 w-10 lg:w-auto px-2 py-4 whitespace-nowrap text-sm md:text-md overflow-auto">
                     {/* {eachData.type.length > 5
                       ? eachData.type.substring(0, 5) + "..."
                       : eachData.type} */}
@@ -93,7 +93,7 @@ function Table() {
                       
                   </td>
 
-                  <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md ">
+                  <td className="md:px-6 px-2 py-4 whitespace-nowrap text-sm md:text-md font-semibold ">
                     {eachData.currency}{" "}
                     {eachData.amount
                       ?.toFixed(2)
@@ -106,7 +106,9 @@ function Table() {
                         : "text-red-500"
                     }`}
                   >
-                    {eachData.status}
+                    <span className={`${eachData?.status == "Success"? " border border-green-300": "border border-red-500"} rounded-full px-3 py-1`}>
+                     {eachData.status}
+                    </span>
                   </td>
                 </tr>
               );
