@@ -79,7 +79,7 @@ var currentMinute = currentTime.getMinutes();
       {/* content here */}
       <div className="mt-2 mb-5 mx-2">
             {/* cards */}
-            <div className="grid lg:grid-cols-4 md:grid-cols-2 md:gap-2" >
+            <div className="grid lg:grid-cols-4 md:grid-cols-2 md:gap-5" >
               <BalanceCard title={"Available Balance"} amount={data?.balance} currency={data?.currency} bkg={'red-400'} txt={'white'}/>
               <BalanceCard title={"Savings"} amount={data?.total} currency={data?.currency} bkg={'card-bg'}/>
               <BalanceCard title={"Fixed Deposit"} amount={data?.loanBalance}  currency={data?.currency} bkg={'card-bg'}/>
@@ -87,27 +87,33 @@ var currentMinute = currentTime.getMinutes();
             </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-1 md:gap-5 ">
           <div className="md:col-span-2 md:order-first ">
-            <div className="lg:py-5 bg-white rounded-md md:col-span-2 grid md:grid-cols-2 gap-3">
+            <div className="rounded-md md:col-span-2 grid md:grid-cols-2 gap-3">
               {/* <LineChart /> */}
               {
                 cards && cards?.map((card,index)=>{
-                    return  cards.length >=1 && <Atm detail={card} key={index}/>
+                    return  cards.length >=1 && (
+                      <div>
+                         <Atm detail={card} key={index}/>
+                      </div>
+                    )
                 })
               }
+              <div className="w-full h-64 rounded-3xl bg-slate-200 animate-pulse"></div>
+              
               {cards.length <= 0 ? "No cards Available" : ''}
              
             </div>
             
             {/* transaction history */}
             <div className="md:mb-10 mb-5 my-2 bg-white p-4 shadow-lg rounded-lg">
-              <p className="text-xl text-slate-500 w-full">Recent Activities</p>
+              <p className="text-2xl text-slate-500 w-full mb-5 font-semibold">Activities</p>
               <Table/>
             </div>
             {/* end of transaction history */}
           </div>
 
           {/* second col */}
-          <div className="md:p-10 my-5 md:my-0 mb-10">
+          <div className="">
             {/* TRANSFER AND DEPOSIT BUTTONS */}
             <div className="flex justify-between md:gap-5 gap-2 mb-5 text-white">
               <button
@@ -122,6 +128,14 @@ var currentMinute = currentTime.getMinutes();
               >
                 Deposit
               </button>
+            </div>
+
+            <div className="bg-white shadow-md p-4 rounded-md">
+              <div>
+                <LineChart/>
+                <div className="w-full h-40 bg-slate-100 animate-pulse mb-10 hidden md:block"></div>
+                <div className="w-full h-40 bg-slate-100 animate-pulse hidden md:block"></div>
+              </div>
             </div>
           </div>
           {/* end of second col */}

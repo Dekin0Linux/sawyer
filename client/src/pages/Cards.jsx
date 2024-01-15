@@ -21,11 +21,13 @@ function Cards() {
 
     getCards()
   },[])
+
+  
   return (
-    <div className="flex-1 bg-[#f6fdff] md:px-16  px-5 overflow-auto mb-20">
+    <div className="flex-1 md:px-16  px-5 overflow-auto mb-20">
       {loader ? <LoaderComp/> : ''}
       <Topbar title={"Cards"} />
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 bg-white">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 ">
         {
           cards && cards.map((eachCard,index)=>{
             return <Atm key={index} detail={eachCard}/>

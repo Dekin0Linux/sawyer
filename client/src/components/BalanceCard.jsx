@@ -2,7 +2,7 @@ import React from "react";
 
 function BalanceCard({title,amount,currency,bkg,txt}) {
   return (
-    <div className={`${bkg} bg-${bkg} p-8 md:p-4 shadow-lg shadow-blue-100 rounded-md md:my-5 my-2 overflow-x-clip w-auto text-${txt}`}>
+    <div className={`${bkg} bg-${bkg} p-8 md:p-4 shadow-xl shadow-blue-100 rounded-3xl md:my-5 my-2 overflow-x-clip w-auto text-${txt}`}>
       <p className="md:font-semibold text-xl pb-5">
         {title}
       </p>

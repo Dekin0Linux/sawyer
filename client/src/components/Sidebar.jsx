@@ -11,38 +11,38 @@ function Sidebar() {
   }
   return (
     <div>
-      <div className="bg-[#f2f4f5] py-9 hidden md:block h-screen">
+      <div className=" py-9 px-5 hidden md:block h-screen shadow-md">
         <div className="w-[200px] ">
           <Link to={"/dashboard"}>
             <img src={logo} alt="logo" className="w-[100%]"/>
           </Link>
         </div>
 
-        <ul className="">
-          <Link to={"/dashboard"}>
-            <li className="p-5 flex items-center gap-3 px-10 text-xl hover:bg-white hover:text-[#01537b] transition-all duration-75 hover:font-bold">
-              <FcHome /> Dashboard
+        <ul className=" ">
+          <Link to={"/dashboard"} className="">
+            <li className="py-5 flex items-center gap-3 text-xl hover:bg-white hover:px-5 hover:rounded-lg hover:shadow-lg transition-all duration-75 hover:font-bold">
+              <FcHome size={30}/> Dashboard
             </li>
           </Link>
           <Link to={"/dashboard/accounts"}>
-            <li className="p-5 flex items-center gap-3  px-10 text-xl hover:bg-white hover:text-[#01537b] transition-all duration-75 hover:font-bold">
+            <li className="py-5 flex items-center gap-3 text-xl hover:bg-white hover:px-5 hover:rounded-lg hover:shadow-lg transition-all duration-75 hover:font-bold">
               {" "}
-              <FcLibrary /> Accounts
+              <FcLibrary size={30} /> Accounts
             </li>
           </Link>
           <Link to={"/dashboard/card"}>
-            <li className="p-5 flex items-center gap-3 px-10 text-xl hover:bg-white hover:text-[#01537b] transition-all duration-75 hover:font-bold">
-              <FcSimCardChip/>
+            <li className="py-5 flex items-center gap-3 text-xl hover:bg-white hover:px-5 hover:rounded-lg hover:shadow-lg transition-all duration-75 hover:font-bold">
+              <FcSimCardChip size={30}/>
               Card
             </li>
           </Link>
           <Link to={"/dashboard/transactions"}>
-            <li className="p-5 flex items-center gap-3 px-10 text-xl hover:bg-white hover:text-[#01537b] transition-all duration-75 hover:font-bold">
-              <FcStatistics/>
-              Transactions
+            <li className="py-5 flex items-center gap-3 text-xl hover:bg-white hover:px-5 hover:rounded-lg hover:shadow-lg transition-all duration-75 hover:font-bold">
+              <FcStatistics size={30}/>
+              Activities
             </li>
           </Link>
-          <button onClick={logout} className="p-2 text-white w-50 rounded m-5 flex bg-red-400 items-center gap-3 px-14 text-xl hover:bg-red-800 hover:text-white transition-all duration-75 hover:font-bold">Logout</button>
+          <button onClick={logout} className="py-2 text-white w-50 rounded my-5 flex bg-red-400 items-center gap-3 px-14 text-xl hover:bg-red-800 hover:text-white transition-all duration-75 hover:font-bold">Logout</button>
         </ul>
       </div>
       {/* MOBILE TABS */}
